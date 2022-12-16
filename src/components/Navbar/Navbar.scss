@@ -1,6 +1,3 @@
-body{
-  position: relative;
-}
 .navbar{
   display: flex;
   justify-content: space-between;
@@ -8,6 +5,7 @@ body{
   padding: 10px 5%;
   background-color: #00353B;
   color: rgba(255, 255, 255, 0.791);
+  position: relative;
   @media (max-width: 425px) {
     padding: 15px 5%;
   }
@@ -39,7 +37,7 @@ body{
         justify-content: center;
         align-items: center;
         gap: 5px;
-        top: 25%;
+        top: 100%;
         right: 0%;
         padding: 10px;
         li:nth-child(1){
