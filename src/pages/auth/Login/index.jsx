@@ -32,18 +32,6 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <input
-                type="text"
-                placeholder="Username *"
-                {...register('username', {
-                  required: 'Required field!',
-                })}
-              />
-              <p>
-                {errors?.date && errors.date.message}
-              </p>
-            </div>
-            <div>
-              <input
                 type="email"
                 placeholder="Email *"
                 {...register('email', {
@@ -81,7 +69,7 @@ const Login = () => {
             )}
             <div className="btn">
               <button disabled={!isValid} type="submit" className="btn_primary">
-                Register
+                Login
               </button>
             </div>
           </form>

@@ -43,8 +43,9 @@
           border-radius: 6px;
           border: 1px solid #10816a;
           position: relative;
+          transition: .3s;
           &:focus{
-            border: 1px solid #487ccf;
+            border: 1px solid #FFB742;
           }
         }
         p{
@@ -65,11 +66,12 @@
           font-weight: bold;
           cursor: pointer;
           border-radius: 10px;
+          transition: .3s;
           &:disabled{
             cursor: default;
           }
           &:focus{
-            background-color: #487ccf;
+            background-color: #FFB742;
           }
         }
       }
