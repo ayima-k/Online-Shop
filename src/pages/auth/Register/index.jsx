@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form'
 import { BsCheck } from 'react-icons/bs'
 import Loader from '../../../components/Loader';
 import './Register.scss'
-import { getRegister } from '../../../api/api';
-import { AuthContext } from '../../../Providers/AuthProvider';
+import { getCategories, getRegister, getToken } from '../../../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const {
@@ -15,16 +15,25 @@ const Register = () => {
     mode: 'onBlur',
   });
 
-  const { users, loading } = React.useContext(AuthContext)
+  const navigate = useNavigate()
 
-  const onSubmit = (data) => {
-    getRegister(data)
-    .then(r => console.log(r.data))
+  const onSubmit = async (data) => {
+    await getRegister(data)
+    .then(r => {
+      localStorage.setItem('user', JSON.stringify(r.data))
+      getToken({username: data.username, password: data.password})
+      .then(r => {
+        if (r) {
+          localStorage.setItem('accessToken', r.data.access)
+          localStorage.setItem('refreshToken', r.data.refresh)
+          navigate('/')
+        }
+      })
+    })
+    .catch(e => window.alert(e))
   };
-
   return (
     <>
-      {loading ? <Loader /> : ''}
       <div className="container">
         <div className="card">
           <h2>Registration</h2>
@@ -36,10 +45,14 @@ const Register = () => {
                 placeholder="Username *"
                 {...register('username', {
                   required: 'Required field!',
+                  minLength: {
+                    value: 4,
+                    message: 'Minimum 4 symbols!',
+                  },
                 })}
               />
               <p>
-                {errors?.date && errors.date.message}
+                {errors?.username && errors.username.message}
               </p>
             </div>
             <div>
@@ -55,7 +68,7 @@ const Register = () => {
                 })}
               />
               <p>
-                {errors?.title && errors.title.message}
+                {errors?.email && errors.email.message}
               </p>
             </div>
             <div>
@@ -71,15 +84,75 @@ const Register = () => {
                 })}
               />
               <p>
-                {errors?.content && errors.content.message}
+                {errors?.password && errors.password.message}
               </p>
             </div>
+            <div>
+              <input
+                type="text"
+                placeholder="About *"
+                {...register('about', {
+                  required: 'Required field!',
+                })}
+              />
+              <p>
+                {errors?.about && errors.about.message}
+              </p>
+            </div>
+            <div>
+              <input
+                type="tel"
+                placeholder="Phone number *"
+                defaultValue='+996'
+                {...register('phone_number', {
+                  required: 'Required field!',
+                  minLength: {
+                    value: 4,
+                    message: 'Minimum 4 symbols!',
+                  },
+                })}
+              />
+              <p>
+                {errors?.phone_number && errors.phone_number.message}
+              </p>
+            </div>
+            <div>
+              <input
+                type="date"
+                placeholder="Birth date *"
+                {...register('birth_date', {
+                  required: 'Required field!',
+                  minLength: {
+                    value: 4,
+                    message: 'Minimum 4 symbols!',
+                  },
+                })}
+              />
+              <p>
+                {errors?.birth_date && errors.birth_date.message}
+              </p>
+            </div>
+            {/* <div>
+              <input
+                type="file"
+                placeholder="Photo url *"
+                {...register('avatarka', {
+                  required: 'Required field!'
+                })}
+              />
+              <p>
+                {errors?.avatarka && errors.avatarka.message}
+              </p>
+            </div> */}
             {isValid && (
               <p style={{ color: 'green', textAlign: 'center' }}>
                 Success <BsCheck />
               </p>
             )}
             <div className="btn">
+              <button onClick={() => navigate('/auth/login')} className="go">
+                Login
+              </button>
               <button disabled={!isValid} type="submit" className="btn_primary">
                 Register
               </button>

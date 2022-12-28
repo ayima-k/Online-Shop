@@ -3,16 +3,16 @@ import Main from './pages/main/Main';
 import About from './pages/main/About';
 import Login from './pages/auth/Login';
 import Navbar from './components/Navbar'
-import Basket from './pages/main/Basket';
+import Cart from './pages/main/Cart';
 import Profile from './pages/main/Profile';
 import Register from './pages/auth/Register';
-import Favorits from './pages/main/Favorits'
+import Favorites from './pages/main/Favorites'
 import Products from './pages/main/Products';
 import ProductsMore from './components/ProductsMore';
 import PrivateRoutes from "./components/PrivateRoutes";
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://cryxxen.pythonanywhere.com/api/'
+axios.defaults.baseURL = 'https://cryxxen.pythonanywhere.com/'
 
 function App() {
   return (
@@ -24,11 +24,11 @@ function App() {
         <Route path="/auth/register" element={<Register/>}/>
         <Route path="/auth/login" element={<Login/>}/>
         <Route path="/products" element={<Products/>}/>
-        <Route path='/products/:id' element={<ProductsMore/>}/>
-        <Route path="/favorits" element={<Favorits/>}/>
+        <Route path='/products/product/:id' element={<ProductsMore/>}/>
         <Route element={<PrivateRoutes/>}>
-          <Route path="/basket" element={<Basket/>}/>
+          <Route path="/basket" element={<Cart/>}/>
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/favorites" element={<Favorites/>}/>
         </Route>
       </Routes>
     </>

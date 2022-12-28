@@ -4,7 +4,7 @@
   align-items: center;
   padding: 10px 5%;
   background-color: #00353B;
-  color: rgba(255, 255, 255, 0.791);
+  color: rgba(255, 255, 255, 0.939);
   position: relative;
   @media (max-width: 425px) {
     padding: 15px 5%;
@@ -30,6 +30,7 @@
         display: none;
       }
       .active{
+        z-index: 999;
         width: 100%;
         position: absolute;
         display: flex;
@@ -49,6 +50,9 @@
           text-align: center;
         }
       }
+    }
+    .liActive{
+      border-bottom: 1px solid #FFB742;
     }
     li{
       list-style: none;

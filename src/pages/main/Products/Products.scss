@@ -1,0 +1,126 @@
+.products{
+  padding: 1%;
+  .container1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    .categories{
+      display: flex;
+      @media (max-width: 768px) {
+        overflow-x: scroll;
+      }
+      .categories_block{
+        border: 1px solid #FFB742;
+        border-radius: 15px;
+        transition: .3s;
+        padding: 10px 30px;
+        cursor: pointer;
+        &:hover{
+          background-color: #FFB742;
+          color: #fff;
+        }
+        &.active{
+          background-color: #FFB742;
+          color: #fff;
+        }
+      }
+    }
+    @media (max-width: 425px) {
+      gap: 20px;
+      justify-content: center;
+    }
+  }
+  .container2{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+    padding-top: 1rem;
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 425px) {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 3%;
+    }
+  }
+  .dFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .root{
+    position: relative;
+    .input{
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 12px 20px;
+      padding-left: 42px;
+      width: 400px;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: 0;
+  
+      @media (max-width: 1024px) {
+        width: 300px;
+      }
+      @media (max-width: 768px) {
+        width: 400px;
+      }
+      @media (max-width: 425px) {
+        width: 350px;
+      }
+      @media (max-width: 396px) {
+        width: 320px;
+      }
+      @media (max-width: 375px) {
+        width: 300px;
+      }
+      @media (max-width: 320px) {
+        width: 250px;
+      }
+  
+      &:focus{
+        border: 1px solid #1C6758;
+      }
+    }
+    
+    .icon{
+      width: 22px;
+      height: 22px;
+      opacity: 0.3;
+      position: absolute;
+      left: 14px;
+      top: 12px;
+    }
+    
+    .clearIcon{
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      opacity: 0.3;
+      top: 13px;
+      left: 28%;
+      cursor: pointer;
+      @media (max-width: 1440px) {
+        left: 91%;
+      }
+      @media (max-width: 768px) {
+        left: 89%;
+      }
+      @media (max-width: 425px) {
+        left: 85%;
+      }
+  
+      &:hover{
+        opacity: 0.8;
+      }
+    }
+  }
+}

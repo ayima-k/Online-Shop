@@ -1,0 +1,67 @@
+.cart{
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .cart_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 30px;
+    grid-row-gap: 20px;
+    padding-top: 1rem;
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 425px) {
+      grid-template-columns: repeat(1, 1fr);
+      padding: 3%;
+    }
+
+    .dFlexForCard{
+      .del{
+        svg{
+          font-size: 30px;
+          cursor: pointer;
+          color: #00353B;
+        }
+      }
+      .counter{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        button{
+          background: none;
+          border: 0;
+          cursor: pointer;
+          transition: .3s;
+          svg{
+            font-size: 35px;
+            cursor: pointer;
+            color: #00353B;
+          }
+          &:disabled{
+            cursor: default;
+            svg{
+              color: gray;
+              cursor: default;
+            }
+          }
+          &:focus{
+            svg{
+              background-color: lightgray;
+              border-radius: 50%;
+            }
+          }
+        }
+        span{
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: 75vh;
   margin-top: 3rem;
   .card{
     width: 25%;
@@ -57,11 +57,12 @@
       }
       .btn{
         margin: 0 30px;
+        flex-direction: row;
         button{
           padding: 15px 0;
           background-color: #10816a;
-          width: 100%;
           border: 0;
+          width: 100%;
           color: #fff;
           font-weight: bold;
           cursor: pointer;
@@ -72,6 +73,14 @@
           }
           &:focus{
             background-color: #FFB742;
+          }
+        }
+        .go{
+          color: black;
+          background: none;
+          border: 1px solid #10816a;
+          &:focus{
+            color: #fff;
           }
         }
       }
