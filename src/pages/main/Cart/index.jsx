@@ -1,9 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addCount, getBasket, getCount, getSingleBasket, removeFromBasket } from '../../../api/api'
+import { addCount, getBasket, getCount, removeFromBasket } from '../../../api/api'
 import { AiOutlineMinusCircle, AiOutlinePlusCircle, AiFillDelete } from 'react-icons/ai'
-import './Cart.scss'
 import Loader from '../../../components/Loader'
+import './Cart.scss'
 
 const Cart = () => {
   const [data, setData] = React.useState(null)
@@ -27,12 +27,12 @@ const Cart = () => {
   }, [udpateUseEffect, setData])
 
   const increase = (id, amount) => {
-    addCount({product: `${id}`, amount: `${amount + 1}`}, accessToken)
+    addCount({'product': `${id}`, 'amount': `${amount + 1}`}, accessToken)
     .then(() => setUpdateUseUffect('Inc!'))
 	}
 
 	const decrease = (id, amount) => {
-		addCount({product: `${id}`, amount: `${amount - 1}`}, accessToken)
+		addCount({"product": `${id}`, "amount": `${amount - 1}`}, accessToken)
     .then(() => setUpdateUseUffect('Dec!'))
 	}
 
@@ -44,7 +44,7 @@ const Cart = () => {
   return ( 
     <div className="cart">
       <div className="total_block">
-        <h2>Сумма заказа: {total}</h2>
+        <h2>Сумма заказа: {total} сом</h2>
       </div>
       {!data && <div className='dFlex'><Loader/></div>}
       <div className='cart_container'>

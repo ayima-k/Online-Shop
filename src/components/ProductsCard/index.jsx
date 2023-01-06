@@ -11,7 +11,7 @@ const ProductsCard = ({id, title, category, image, price, is_active}) => {
 
   const handleAddToBasket = () => {
     setIsInBasket(true)
-    addToBasket({products: [id], is_active: is_active}, accessToken)
+    addToBasket({products: [JSON.stringify(id)], is_active: is_active}, accessToken)
   }
 
   React.useEffect(() => {

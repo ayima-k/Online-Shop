@@ -81,9 +81,12 @@ const Favorites = () => {
           />
           {value && <svg onClick={onClickClear} className='clearIcon' viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"/></svg>}
         </div>
+        {
+          !data && <div className='dFlex'><Loader/></div>
+        }
         <div className="favorites_dBlock">
           {
-            data?.length >= 1 ? data?.map(item => item !== null ? ( 
+            data?.length >= 1 && data?.map(item => item !== null ? ( 
               <div className='productCard' key={item?.id}>
                 <img onClick={() => navigate(`/products/product/${item?.id}`)} src={item?.image} alt="" />
                 <div>
@@ -96,7 +99,7 @@ const Favorites = () => {
                   </div>
                 </div>
               </div>
-            ) : '') : <div className='dFlex'><Loader/></div>
+            ) : '')
           }
         </div>
       </div>

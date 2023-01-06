@@ -51,7 +51,7 @@ const ProductsMore = () => {
 
   const handleAddToBasket = () => {
     setIsInBasket(true)
-    addToBasket({products: [id], is_active: data?.is_active}, accessToken)
+    addToBasket({products: [JSON.stringify(id)], is_active: data?.is_active}, accessToken)
   }
 
   return data ? (
